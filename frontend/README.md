@@ -1,4 +1,4 @@
-# Quinti frontend
+# Quintti frontend
 
 Next.js (App Router) + TypeScript + Tailwind CSS. One app with two faces:
 

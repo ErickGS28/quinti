@@ -58,8 +58,8 @@ export function createSeedSnapshot(now: number): FundSnapshot {
     zoneId,
     beneficiaryName: `Familia ${index + 1}`,
     coverage: toBaseUnits(coverage),
-    sponsor: demoAddress(`quinti-seed-sponsor-${index}`),
-    payoutTo: demoAddress(`quinti-seed-payout-${index}`),
+    sponsor: demoAddress(`quintti-seed-sponsor-${index}`),
+    payoutTo: demoAddress(`quintti-seed-payout-${index}`),
     activeFrom,
     coveredUntil,
     createdAt: activeFrom - FUND_CONFIG.waitingSeconds,
@@ -68,8 +68,8 @@ export function createSeedSnapshot(now: number): FundSnapshot {
   const policies = [luz, ...others];
 
   const contributions: Contribution[] = [
-    { donor: demoAddress("quinti-seed-donor-1"), amount: toBaseUnits(400), at: now - 3 * SECONDS_PER_DAY },
-    { donor: demoAddress("quinti-seed-donor-2"), amount: toBaseUnits(250), at: now - 2 * SECONDS_PER_DAY },
+    { donor: demoAddress("quintti-seed-donor-1"), amount: toBaseUnits(400), at: now - 3 * SECONDS_PER_DAY },
+    { donor: demoAddress("quintti-seed-donor-2"), amount: toBaseUnits(250), at: now - 2 * SECONDS_PER_DAY },
   ];
 
   const premiums = policies.reduce((total, policy) => total + premiumFor(policy.coverage, PREMIUM_BPS), 0n);

@@ -26,7 +26,7 @@ export function Hero() {
         </div>
 
         <h1 className="mt-[clamp(0.5rem,2vh,1.25rem)] text-[length:clamp(3.5rem,min(14vh,22vw),8rem)] leading-[1.05] font-bold tracking-tight">
-          <BlurInText text="Quinti" />
+          <BlurInText text="Quintti" />
         </h1>
 
         <p className="animate-rise mt-[clamp(0.75rem,2.5vh,1.5rem)] text-[length:clamp(0.75rem,1.9vh,1.125rem)] font-bold tracking-[0.18em] text-canopy-strong uppercase [animation-delay:900ms]">

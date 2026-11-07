@@ -1,8 +1,8 @@
-# Quinti
+# Quintti
 
 > Community protection against natural disasters. Small, fast and direct, like a hummingbird.
 
-**Quinti** (*qínti*, hummingbird in Quechua) is a community fund that automatically pays digital dollars to families in a zone hit by a natural disaster. No forms, no assessments: when public data confirms the event, a Stellar contract sends the money. Anyone living abroad can protect their family with a small monthly premium.
+**Quintti** (*qínti*, hummingbird in Quechua) is a community fund that automatically pays digital dollars to families in a zone hit by a natural disaster. No forms, no assessments: when public data confirms the event, a Stellar contract sends the money. Anyone living abroad can protect their family with a small monthly premium.
 
 ## Status
 

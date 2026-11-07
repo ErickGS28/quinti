@@ -6,7 +6,7 @@
  Public data source (USGS, etc.)
           │  (read by an attester, off-chain)
           ▼
- Attester console ──► Quinti contract ◄── Web frontend ◄── User
+ Attester console ──► Quintti contract ◄── Web frontend ◄── User
                                   │                   │
                                   │                   └── Wallet (signs)
                                   └── Token contract (USDC / test token)
@@ -40,7 +40,7 @@ project/
 ├── docs/                         this documentation
 │   └── decisions/                design decisions (ADR)
 ├── contracts/
-│   └── quinti/src/               lib.rs · types.rs · errors.rs · events.rs · storage.rs · logic.rs · test.rs
+│   └── quintti/src/              lib.rs · types.rs · errors.rs · events.rs · storage.rs · logic.rs · test.rs
 ├── frontend/src/                 Next.js (App Router), see frontend/README.md
 │   ├── app/                      routes, composition only: / (landing), /como-funciona/* (guides) and /app/* (prototype)
 │   ├── features/

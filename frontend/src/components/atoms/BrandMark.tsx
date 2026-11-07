@@ -8,7 +8,7 @@ type BrandMarkProps = {
 };
 
 /**
- * The Quinti hummingbird inside its open ring. The ring is a gradient from leaf to canopy green and
+ * The Quintti hummingbird inside its open ring. The ring is a gradient from leaf to canopy green and
  * the bird is deep teal. The mark spins once when it, or the group it belongs to, is hovered.
  */
 export function BrandMark({ className }: BrandMarkProps) {

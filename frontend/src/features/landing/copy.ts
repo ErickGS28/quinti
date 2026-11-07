@@ -12,7 +12,7 @@ export const landingCopy = {
 
   hero: {
     accent: ["Protección", "Solidaridad", "Reconstrucción"],
-    body: "Cuando el desastre golpea, ninguna familia debería levantarse sola. Quinti reúne a una comunidad para que cada familia reciba apoyo en minutos y pueda empezar a reconstruir.",
+    body: "Cuando el desastre golpea, ninguna familia debería levantarse sola. Quintti reúne a una comunidad para que cada familia reciba apoyo en minutos y pueda empezar a reconstruir.",
     primary: "Proteger a los míos",
     secondary: "Ver cómo funciona",
   },
@@ -63,14 +63,14 @@ export const landingCopy = {
         body: "Arreglar la casa o reabrir el pequeño negocio que sostiene a la familia.",
       },
     ],
-    note: "Quinti complementa la ayuda de emergencia; no la reemplaza.",
+    note: "Quintti complementa la ayuda de emergencia; no la reemplaza.",
   },
 
   how: {
     id: LANDING_SECTIONS.how,
     eyebrow: "Cómo funciona",
     title: "Protección en tres pasos.",
-    body: "Quinti reúne las cuotas de muchas personas en un fondo común. Cuando un desastre se confirma, el fondo paga a quienes estaban protegidos en esa zona. Las reglas son públicas y se aplican igual para todos.",
+    body: "Quintti reúne las cuotas de muchas personas en un fondo común. Cuando un desastre se confirma, el fondo paga a quienes estaban protegidos en esa zona. Las reglas son públicas y se aplican igual para todos.",
     steps: [
       {
         title: "Eliges quién queda protegido",
@@ -228,9 +228,9 @@ export const landingCopy = {
           "Necesitas una billetera Stellar. Los pagos se hacen en dólares digitales (USDC). Convertirlos a moneda local depende de los servicios de cambio disponibles en tu país.",
       },
       {
-        question: "¿Quinti es un seguro?",
+        question: "¿Quintti es un seguro?",
         answer:
-          "Quinti es un fondo comunitario de ayuda mutua con pagos definidos por reglas públicas. No es una póliza de seguro regulada.",
+          "Quintti es un fondo comunitario de ayuda mutua con pagos definidos por reglas públicas. No es una póliza de seguro regulada.",
       },
     ],
   },
@@ -242,8 +242,8 @@ export const landingCopy = {
   },
 
   footer: {
-    origin: "Qínti es colibrí en quechua: pequeño, veloz y directo.",
+    origin: "Quintti viene de qínti, colibrí en quechua: pequeño, veloz y directo.",
     credit: "Construido sobre la red Stellar",
-    legal: "Quinti es un fondo comunitario de ayuda mutua. No es una póliza de seguro regulada.",
+    legal: "Quintti es un fondo comunitario de ayuda mutua. No es una póliza de seguro regulada.",
   },
 } as const;

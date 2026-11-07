@@ -2,7 +2,7 @@ import { NETWORK_NAME } from "@/config/constants";
 import { DEMO_SPONSOR } from "@/lib/demo/demo-people";
 import type { WalletAccount, WalletAdapter } from "./wallet-adapter";
 
-const SESSION_KEY = "quinti.demo.wallet.v1";
+const SESSION_KEY = "quintti.demo.wallet.v1";
 const CONNECT_LATENCY_MS = 700;
 
 const demoAccount: WalletAccount = { address: DEMO_SPONSOR.address, network: NETWORK_NAME };

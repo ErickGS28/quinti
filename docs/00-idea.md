@@ -2,13 +2,13 @@
 
 ## In one sentence
 
-**Quinti is a community fund that automatically pays digital dollars to families in a zone hit by a natural disaster, within minutes and with no paperwork, using a contract on Stellar.**
+**Quintti is a community fund that automatically pays digital dollars to families in a zone hit by a natural disaster, within minutes and with no paperwork, using a contract on Stellar.**
 
 The family abroad can pay for it too: someone living in another country protects their loved ones with a small premium.
 
 ## The name
 
-*Qínti* (or *kinti*) means **hummingbird** in Quechua. The hummingbird is small, fast and arrives exactly where it is needed. That is the idea: help that is small, quick and direct.
+*Qínti* (or *kinti*) means **hummingbird** in Quechua. Quintti takes its name from it. The hummingbird is small, fast and arrives exactly where it is needed. That is the idea: help that is small, quick and direct.
 
 ## The problem we solve
 

@@ -13,7 +13,7 @@ Communities in seismic, flood-prone or hurricane-exposed zones across Latin Amer
 
 ## Solution
 
-**Quinti** is a community protection fund with **parametric payouts**: the contract pays when a public, measurable data point crosses a threshold in a zone. It does not assess individual damage, does not ask for documents and does not depend on anyone approving a claim.
+**Quintti** is a community protection fund with **parametric payouts**: the contract pays when a public, measurable data point crosses a threshold in a zone. It does not assess individual damage, does not ask for documents and does not depend on anyone approving a claim.
 
 - A **small monthly premium** in digital dollars, which a relative in another country can pay.
 - A **common pool** that donors can also contribute to.
@@ -52,6 +52,6 @@ Core message: **parametric protection made accessible, cheap and verifiable for 
 
 ## Positioning (internal)
 
-*For families in risk zones in Latin America and their relatives abroad, Quinti is a community parametric fund that pays in minutes when a disaster occurs, unlike slow and exclusionary traditional insurance, because the payout is executed by a public contract based on objective data.*
+*For families in risk zones in Latin America and their relatives abroad, Quintti is a community parametric fund that pays in minutes when a disaster occurs, unlike slow and exclusionary traditional insurance, because the payout is executed by a public contract based on objective data.*
 
 Hypotheses to validate (not facts): that the diaspora would pay a premium to protect their family, that people accept a pool shared across zones (see [decisions/0007-shared-pool-across-zones.md](decisions/0007-shared-pool-across-zones.md)), and that a parametric payout is enough liquidity for the first days.

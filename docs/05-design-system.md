@@ -4,7 +4,7 @@
 
 ## Direction
 
-**Cupertino: simple, calm, beautiful.** Quinti is about emergencies and family money. The interface should convey serenity, clarity and trust, not noise.
+**Cupertino: simple, calm, beautiful.** Quintti is about emergencies and family money. The interface should convey serenity, clarity and trust, not noise.
 
 Principles:
 
@@ -57,7 +57,7 @@ Rules:
 
 ## Logo
 
-A hummingbird inside an open ring. The ring is a gradient from `#7AE582` to `#25A18E` and the bird is `#004E64`. The mark spins one full turn when the mark, or the logo group it belongs to, is hovered; reduced motion disables it. The vector in `frontend/src/components/atoms/brand-mark-paths.ts` and `frontend/public/quinti-logo.svg` was traced automatically from the prototype image, so its edges are slightly irregular at large sizes. Replace it with the designer's vector when available.
+A hummingbird inside an open ring. The ring is a gradient from `#7AE582` to `#25A18E` and the bird is `#004E64`. The mark spins one full turn when the mark, or the logo group it belongs to, is hovered; reduced motion disables it. The vector in `frontend/src/components/atoms/brand-mark-paths.ts` and `frontend/public/quintti-logo.svg` was traced automatically from the prototype image, so its edges are slightly irregular at large sizes. Replace it with the designer's vector when available.
 
 ## Navigation and page chrome
 
@@ -99,6 +99,6 @@ Concentric rings that spread from a point. They read as a seismic wave, a ripple
 
 ## Identity
 
-- Name: **Quinti** (*qínti*, hummingbird in Quechua).
+- Name: **Quintti** (*qínti*, hummingbird in Quechua).
 - Logo: see the Logo section above.
 - Tone: warm, direct, hopeful, never dramatic.

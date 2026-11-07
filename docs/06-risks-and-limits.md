@@ -10,7 +10,7 @@ These are properties of the current design. They are stated openly because they 
 4. **Flat premium.** Every zone pays the same rate regardless of its risk, so higher-risk zones are subsidized by the rest. A per-zone risk multiplier and a per-zone exposure cap are the next step, not part of the MVP.
 5. **One shared pool.** Premiums from every zone fund payouts in any zone ([decision 0007](decisions/0007-shared-pool-across-zones.md)). When several events happen at once, the first confirmed reserves its share and later events are paid pro-rata from what remains. A very large disaster can therefore pay less than 100 %.
 6. **The pool can run out.** Payouts are reduced proportionally and the contract never pays more than it holds. The surplus when no disaster occurs stays in the pool; whether it is returned to members is an open decision.
-7. **Regulation.** Quinti is a community fund of mutual aid, not a regulated insurance policy. A legal framework is required before it handles real money.
+7. **Regulation.** Quintti is a community fund of mutual aid, not a regulated insurance policy. A legal framework is required before it handles real money.
 8. **Cash-out.** Payouts are in digital dollars. Converting them to local currency depends on ramps and cash-out agents that are not solved by the product itself.
 9. **Unaudited contract.** An independent audit is required before real value is held.
 

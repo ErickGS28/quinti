@@ -23,7 +23,7 @@ export function BrandLogo({ size = "md", className }: BrandLogoProps) {
   return (
     <span className={classNames("inline-flex items-center gap-3", className)}>
       <BrandMark className={MARK_SIZES[size]} />
-      <span className={classNames("font-semibold tracking-tight text-lagoon", TEXT_SIZES[size])}>Quinti</span>
+      <span className={classNames("font-semibold tracking-tight text-lagoon", TEXT_SIZES[size])}>Quintti</span>
     </span>
   );
 }

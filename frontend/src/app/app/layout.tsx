@@ -15,7 +15,7 @@ export default function AppLayout({ children }: LayoutProps<"/app">) {
   return (
     <AppShell
       brand={<BrandLogo size="lg" />}
-      brandLabel="Quinti, ir a la página principal"
+      brandLabel="Quintti, ir a la página principal"
       homeHref={ROUTES.landing}
       navItems={NAV_ITEMS}
       navLabel="Navegación principal"

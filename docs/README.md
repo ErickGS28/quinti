@@ -1,4 +1,4 @@
-# Quinti documentation
+# Quintti documentation
 
 | # | Document | Purpose |
 |---|----------|---------|

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ROUTES } from "@/config/constants";
 import { protectCopy } from "../copy";
 
-/** Plain-language explanation shown before the form, for people who have never used Quinti. */
+/** Plain-language explanation shown before the form, for people who have never used Quintti. */
 export function ProtectIntro() {
   return (
     <section aria-labelledby="protect-intro-title" className="mt-8 rounded-card bg-mist p-6 sm:p-7">

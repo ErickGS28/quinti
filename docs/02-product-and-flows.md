@@ -73,7 +73,7 @@ Dashboard with: pool balance, policies by zone, map, recent events and payouts m
 
 ## Screens (MVP)
 
-1. **Home:** what Quinti is, connect wallet, protect someone, contribute.
+1. **Home:** what Quintti is, connect wallet, protect someone, contribute.
 2. **Protect:** form for zone, coverage, payout address and premium.
 3. **My policies:** status, validity, renew.
 4. **Pool and events:** balance, map by zones, timeline of events and payouts.

@@ -1,4 +1,4 @@
-/** Vector outlines of the Quinti logo, traced from the delivered artwork. Generated; do not edit by hand. */
+/** Vector outlines of the Quintti logo, traced from the delivered artwork. Generated; do not edit by hand. */
 export const LOGO_VIEW_BOX = "172 129 881 881";
 
 export const LOGO_RING_PATHS = [

@@ -11,8 +11,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Quinti · Protección comunitaria ante desastres",
-    template: "%s · Quinti",
+    default: "Quintti · Protección comunitaria ante desastres",
+    template: "%s · Quintti",
   },
   description:
     "Un fondo comunitario que paga en minutos, en dólares digitales, a las familias de una zona golpeada por un desastre natural. Protege a quienes más quieres con una cuota mensual pequeña.",
