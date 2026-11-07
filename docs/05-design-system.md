@@ -63,7 +63,7 @@ A hummingbird inside an open ring. The ring is a gradient from `#7AE582` to `#25
 
 The logo is not part of the menu.
 
-- **Landing page:** the floating menu comes first, at the very top. The hero sits right below it and presents the large logo with its name.
+- **Landing page:** the floating menu comes first, at the very top, with the section links centered and no button (people reach the app by its route). The menu hugs its four links instead of stretching. The hero sits right below it and is deliberately minimal and centered: logo, large name, one line of three words, one short paragraph and two actions. On load the name comes into focus letter by letter (pure CSS) and the rest rises in after it; reduced motion shows everything at once. Sizes and gaps in the hero follow the window height, so the buttons keep breathing room at any zoom level.
 - **App:** the logo sits at the top left of a header, next to the account, and the menu floats under it.
 - **Menu:** a rounded bar at 75 to 80% of the width. On phones it floats above the bottom edge. On the landing page only the first and last links fit next to the button on small screens.
 - **Scroll to top:** a round green button at the bottom left, visible after scrolling about 480 px. In the app it sits above the bottom menu on phones.

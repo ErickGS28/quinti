@@ -1,34 +1,51 @@
 import { ArrowRight } from "lucide-react";
-import { Badge } from "@/components/atoms/Badge";
+import { BlurInText } from "@/components/atoms/BlurInText";
+import { BrandMark } from "@/components/atoms/BrandMark";
 import { ButtonLink } from "@/components/atoms/Button";
 import { ROUTES } from "@/config/constants";
 import { landingCopy } from "../copy";
-import { HeroVisual } from "./HeroVisual";
 
 const { hero, how } = landingCopy;
 
+/**
+ * Minimal, centered opening: logo, name, three words, one sentence and two actions.
+ * Sizes and gaps follow the height of the window (vh), so everything fits with room to spare
+ * at any zoom level and the buttons never touch the bottom edge.
+ */
 export function Hero() {
   return (
-    <section className="overflow-hidden">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
-        <div>
-          <Badge tone="canopy">{hero.badge}</Badge>
-          <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.5rem]">
-            {hero.title}
-          </h1>
-          <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-soft sm:text-xl">{hero.body}</p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <ButtonLink href={ROUTES.protect} size="lg">
-              {hero.primary}
-              <ArrowRight className="size-5" aria-hidden="true" />
-            </ButtonLink>
-            <ButtonLink href={`#${how.id}`} size="lg" variant="soft">
-              {hero.secondary}
-            </ButtonLink>
-          </div>
-          <p className="mt-6 max-w-md text-sm text-ink-faint">{hero.assurance}</p>
+    <section className="relative flex min-h-[calc(100dvh-5.5rem)] items-center justify-center overflow-hidden px-5 py-[clamp(2rem,7vh,5rem)] sm:px-8">
+      <div
+        aria-hidden="true"
+        className="hero-glow pointer-events-none absolute left-1/2 top-1/2 size-[40rem] -translate-x-1/2 -translate-y-1/2 sm:size-[52rem]"
+      />
+
+      <div className="relative flex max-w-3xl flex-col items-center text-center">
+        <div className="animate-rise">
+          <BrandMark className="size-[clamp(4.5rem,15vh,9rem)]" />
         </div>
-        <HeroVisual />
+
+        <h1 className="mt-[clamp(0.5rem,2vh,1.25rem)] text-[length:clamp(3.5rem,min(14vh,22vw),8rem)] leading-[1.05] font-bold tracking-tight">
+          <BlurInText text="Quinti" />
+        </h1>
+
+        <p className="animate-rise mt-[clamp(0.75rem,2.5vh,1.5rem)] text-[length:clamp(0.75rem,1.9vh,1.125rem)] font-bold tracking-[0.18em] text-canopy-strong uppercase [animation-delay:900ms]">
+          {hero.accent.join(" · ")}
+        </p>
+
+        <p className="animate-rise mt-[clamp(1rem,3.5vh,2rem)] max-w-xl text-pretty text-[length:clamp(1rem,2.3vh,1.25rem)] leading-relaxed text-ink-soft [animation-delay:1050ms]">
+          {hero.body}
+        </p>
+
+        <div className="animate-rise mt-[clamp(1.25rem,4.5vh,2.5rem)] flex flex-wrap justify-center gap-3 [animation-delay:1200ms]">
+          <ButtonLink href={ROUTES.protect} size="lg" shape="pill">
+            {hero.primary}
+            <ArrowRight className="size-5" aria-hidden="true" />
+          </ButtonLink>
+          <ButtonLink href={`#${how.id}`} size="lg" shape="pill" variant="soft">
+            {hero.secondary}
+          </ButtonLink>
+        </div>
       </div>
     </section>
   );

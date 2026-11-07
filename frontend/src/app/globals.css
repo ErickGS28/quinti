@@ -90,6 +90,7 @@
   --animate-ripple: ripple 5.4s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
   --animate-rise: rise 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
   --animate-spin-once: spin-once 0.9s cubic-bezier(0.45, 0, 0.2, 1);
+  --animate-letter-in: letter-in 1s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
 html {
@@ -181,6 +182,20 @@ body {
   }
 }
 
+/* Each letter starts blurred, transparent and slightly low, then comes into focus. */
+@keyframes letter-in {
+  from {
+    opacity: 0;
+    filter: blur(14px);
+    transform: translateY(0.32em) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes sheet-in {
   from {
     opacity: 0;
@@ -198,6 +213,11 @@ body {
     radial-gradient(52rem 26rem at 88% 0%, rgb(0 165 207 / 0.12), transparent 70%),
     radial-gradient(48rem 28rem at 6% 14%, rgb(159 255 203 / 0.5), transparent 70%),
     radial-gradient(32rem 22rem at 55% 40%, rgb(122 229 130 / 0.18), transparent 70%);
+}
+
+/* Soft green glow behind the hero, in the spirit of a single spotlight. */
+.hero-glow {
+  background: radial-gradient(closest-side, rgb(122 229 130 / 0.32), rgb(0 165 207 / 0.1) 55%, transparent 78%);
 }
 
 dialog.sheet {
