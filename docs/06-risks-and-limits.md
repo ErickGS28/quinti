@@ -7,10 +7,12 @@ These are properties of the current design. They are stated openly because they 
 1. **Trusted attesters.** A fixed group of known accounts confirms events with a k-of-n quorum. It is not a decentralized oracle, and it is the largest trust point of the design. Evolution path: a decentralized oracle or independent attesters such as local organizations, universities and geological services ([decision 0003](decisions/0003-trusted-attesters-mvp.md)).
 2. **Self-declared zone.** A person chooses their zone when enrolling. The waiting period, the coverage cap and the fixed zone reduce abuse, but do not eliminate it. For forecastable hazards (hurricanes, heavy rain) the waiting period must be longer than the forecast horizon. Local attesters who vouch for each zone are a possible next step.
 3. **Conservative liability estimate.** Exposure per zone includes policies that are waiting or expired, which can lower the funding factor more than necessary.
-4. **One shared pool.** Premiums from every zone fund payouts in any zone ([decision 0007](decisions/0007-shared-pool-across-zones.md)).
-5. **Regulation.** Quinti is a community fund of mutual aid, not a regulated insurance policy. A legal framework is required before it handles real money.
-6. **Cash-out.** Payouts are in digital dollars. Converting them to local currency depends on ramps and cash-out agents that are not solved by the product itself.
-7. **Unaudited contract.** An independent audit is required before real value is held.
+4. **Flat premium.** Every zone pays the same rate regardless of its risk, so higher-risk zones are subsidized by the rest. A per-zone risk multiplier and a per-zone exposure cap are the next step, not part of the MVP.
+5. **One shared pool.** Premiums from every zone fund payouts in any zone ([decision 0007](decisions/0007-shared-pool-across-zones.md)). When several events happen at once, the first confirmed reserves its share and later events are paid pro-rata from what remains. A very large disaster can therefore pay less than 100 %.
+6. **The pool can run out.** Payouts are reduced proportionally and the contract never pays more than it holds. The surplus when no disaster occurs stays in the pool; whether it is returned to members is an open decision.
+7. **Regulation.** Quinti is a community fund of mutual aid, not a regulated insurance policy. A legal framework is required before it handles real money.
+8. **Cash-out.** Payouts are in digital dollars. Converting them to local currency depends on ramps and cash-out agents that are not solved by the product itself.
+9. **Unaudited contract.** An independent audit is required before real value is held.
 
 ## Product risks
 
@@ -36,7 +38,7 @@ A small group of known attesters confirms the event with a k-of-n quorum. This i
 There is a waiting period, a maximum coverage amount, and the zone is fixed once enrolled. This reduces fraud for unpredictable events such as earthquakes. For forecastable hazards the waiting period must be longer. The next step is to add local attesters who vouch for the zone.
 
 **What happens if the pool is not enough?**
-The payout is reduced proportionally. The contract never promises more than it holds, and this is public.
+The payout is reduced proportionally. The contract never promises more than it holds, and this is public. When a disaster is confirmed, the money its payouts need is reserved right away, so a second disaster confirmed before the first is paid cannot be promised the same funds.
 
 **What is the money worth without infrastructure?**
 It sits on the ledger rather than in a local bank. The payout is automatic to an address that can belong to a relative outside the zone. Turning it into cash depends on ramps and cash-out agents.

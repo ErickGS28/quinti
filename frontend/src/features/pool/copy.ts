@@ -2,6 +2,7 @@ export const poolCopy = {
   title: "El fondo",
   subtitle: "Las cuotas y los aportes se reúnen aquí. Cuando un desastre se confirma, de este fondo salen los pagos. Todo es público.",
   available: "Disponible en el fondo",
+  reserved: (amount: string) => `Además, ${amount} ya están apartados para pagos de desastres confirmados.`,
   summary: (families: number, coverage: string) =>
     `${families} ${families === 1 ? "persona protegida" : "personas protegidas"} · ${coverage} de cobertura`,
   worstCaseFull: "Si el peor caso ocurriera en una sola zona, el fondo cubriría todos los pagos.",

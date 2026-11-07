@@ -48,11 +48,27 @@ export function estimateLiability(policies: Policy[], zoneIds: number[], payoutB
   );
 }
 
-/** Pro-rata factor: 10_000 when the pool covers the liability, lower when it does not. */
-export function computeFactorBps(poolAvailable: bigint, liability: bigint): number {
+/** Money already promised to confirmed events that have not been paid out yet. */
+export function reservedTotal(events: FundEvent[]): bigint {
+  return events.reduce((total, event) => total + event.reserved, 0n);
+}
+
+/** Part of the pool still free to back a new event: the balance minus what earlier events reserved. */
+export function poolFree(poolAvailable: bigint, events: FundEvent[]): bigint {
+  const free = poolAvailable - reservedTotal(events);
+  return free > 0n ? free : 0n;
+}
+
+/** Pro-rata factor: 10_000 when the free pool covers the liability, lower when it does not. */
+export function computeFactorBps(free: bigint, liability: bigint): number {
   if (liability <= 0n) return BASIS_POINTS;
-  const factor = (poolAvailable * BASIS) / liability;
+  const factor = (free * BASIS) / liability;
   return Number(factor > BASIS ? BASIS : factor);
+}
+
+/** Amount to set aside for an event: the liability scaled by its factor. Never above the free pool. */
+export function reserveFor(liability: bigint, factorBps: number): bigint {
+  return (liability * BigInt(factorBps)) / BASIS;
 }
 
 /** Amount paid to one policy: coverage * payoutBps / 10_000 * factorBps / 10_000. */

@@ -42,10 +42,10 @@ project/
 ├── contracts/
 │   └── quinti/src/               lib.rs · types.rs · errors.rs · events.rs · storage.rs · logic.rs · test.rs
 ├── frontend/src/                 Next.js (App Router), see frontend/README.md
-│   ├── app/                      routes, composition only: / (landing) and /app/* (prototype)
+│   ├── app/                      routes, composition only: / (landing), /como-funciona/* (guides) and /app/* (prototype)
 │   ├── features/
 │   │   ├── landing/              presentation page (header, floating menu, explanation, FAQ), fully static
-│   │   ├── wallet-session/       connect button and the "connect first" gate
+│   │   ├── flows/                "how it works" guide pages with a visual timeline per way of helping
 │   │   ├── demo-mode/            session data reset
 │   │   ├── policies/             the user's protections and received payouts
 │   │   ├── protect/              three-step enrollment wizard and confirmation sheet

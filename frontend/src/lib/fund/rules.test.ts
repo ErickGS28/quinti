@@ -40,6 +40,7 @@ function makeEvent(overrides: Partial<FundEvent> = {}): FundEvent {
     confirmed: true,
     payoutBps: 10_000,
     factorBps: 10_000,
+    reserved: 0n,
     ...overrides,
   };
 }

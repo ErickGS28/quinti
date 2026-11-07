@@ -178,6 +178,40 @@ describe("mock fund client", () => {
     expect(after.poolAvailable).toBe(poolBefore - total);
   });
 
+  it("does not promise the same money to two events confirmed before either is paid", async () => {
+    for (let index = 0; index < 20; index += 1) {
+      await client.enroll({
+        sponsor: DEMO_SPONSOR.address,
+        beneficiaryName: `Extra ${index}`,
+        zoneId: 3,
+        coverage: toBaseUnits(200),
+        payoutTo: DEMO_RELATIVE.address,
+      });
+    }
+    clock += 120;
+    const poolBefore = (await client.getSnapshot()).poolAvailable;
+
+    const first = await confirmEvent(1);
+    const secondReport = { ...reportFromScenario(SCENARIOS[1], clock, 2), value: 70 };
+    await client.reportEvent({ attesterId: "attester-1", report: secondReport });
+    const second = await client.reportEvent({ attesterId: "attester-2", report: secondReport });
+
+    const afterConfirm = await client.getSnapshot();
+    const reserved = afterConfirm.events.reduce((sum, event) => sum + event.reserved, 0n);
+    expect(first.factorBps).toBe(10_000);
+    expect(second.factorBps).toBeLessThan(10_000);
+    expect(reserved).toBeLessThanOrEqual(poolBefore);
+
+    const paidFirst = await client.payOut(first.ref);
+    const paidSecond = await client.payOut(second.ref);
+    const total = [...paidFirst, ...paidSecond].reduce((sum, payout) => sum + payout.amount, 0n);
+    const final = await client.getSnapshot();
+
+    expect(total).toBeLessThanOrEqual(poolBefore);
+    expect(final.poolAvailable).toBe(poolBefore - total);
+    expect(final.events.every((event) => event.reserved === 0n)).toBe(true);
+  });
+
   it("keeps the demo state across clients that share the same storage", async () => {
     await client.contribute(DEMO_SPONSOR.address, toBaseUnits(10));
     const reloaded = createMockFundClient({ storage, simulateLatency: false, now: () => clock });

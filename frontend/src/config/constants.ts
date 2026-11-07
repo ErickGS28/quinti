@@ -9,13 +9,20 @@ export const NETWORK_NAME = "Testnet";
 export const SECONDS_PER_DAY = 86_400;
 
 export const BASIS_POINTS = 10_000;
-
-export const REPOSITORY_URL = "https://github.com/ErickGS28/quinti";
-
 export const ROUTES = {
   landing: "/",
+  howToProtect: "/como-funciona/proteger",
+  howToContribute: "/como-funciona/aportar",
   home: "/app",
   protect: "/app/protect",
   fund: "/app/fund",
   verifier: "/app/verifier",
+} as const;
+
+/** Ids of the landing page sections, shared by the menu, the section headings and pages that link back to them. */
+export const LANDING_SECTIONS = {
+  how: "como-funciona",
+  ways: "participar",
+  why: "por-que",
+  faq: "preguntas",
 } as const;

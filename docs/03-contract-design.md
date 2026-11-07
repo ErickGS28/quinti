@@ -57,6 +57,7 @@ pub struct Event {
     pub approvals: Vec<Address>,
     pub confirmed: bool,
     pub factor_bps: u32,       // fraction of the payout covered by the pool (10000 = 100 %)
+    pub reserved: i128,        // amount set aside from the pool at confirmation, released as claims are paid
 }
 
 #[contracttype]
@@ -68,6 +69,7 @@ pub enum DataKey {
     Claimed(String, u32),      // (event, policy)
     ZoneExposure(u32),         // sum of coverages per zone
     PoolAvailable,             // premiums + contributions - payouts
+    PoolReserved,              // sum of `reserved` over confirmed events not yet paid out
 }
 ```
 
@@ -101,15 +103,16 @@ pub enum DataKey {
 **Payout factor (pro-rata)**
 1. Take the rule with the highest `min_value` that the value satisfies for that hazard (`payout_bps`).
 2. Estimated liability = sum, over the affected zones, of `ZoneExposure(zone) * payout_bps / 10_000`.
-3. `factor_bps = min(10_000, PoolAvailable * 10_000 / liability)`.
-4. The work is O(affected zones), not O(policies).
+3. `free = PoolAvailable - PoolReserved`; `factor_bps = min(10_000, free * 10_000 / liability)`.
+4. `reserved = liability * factor_bps / 10_000` is added to `PoolReserved` and stored in the event. The next event to be confirmed sees a smaller `free`, so two events confirmed before either is paid can never promise the same money.
+5. The work is O(affected zones), not O(policies).
 
 **Claim (`claim`)**
 - The event must be confirmed and the policy must not have claimed that event.
 - The policy's zone must be in `event.zones`.
 - `active_from <= event.occurred_at <= covered_until`.
 - Payout = `coverage * payout_bps / 10_000 * factor_bps / 10_000`.
-- `Claimed` is set, the amount is deducted from `PoolAvailable`, and **only then** is it transferred to `payout_to`.
+- `Claimed` is set, the amount is deducted from `PoolAvailable` and from the event's `reserved` (and from `PoolReserved`), and **only then** is it transferred to `payout_to`. A claim can never draw more than what its own event reserved.
 
 **Arithmetic:** `checked_mul` / `checked_div`; the payout never exceeds the available balance.
 
@@ -149,9 +152,10 @@ pub enum Error {
 
 1. **Trusted attesters.** A k-of-n quorum of known accounts, not a decentralized oracle. This is the largest trust point in the design.
 2. **Self-declared zone.** Mitigated by the waiting period, the maximum coverage and the fixed zone; not eliminated. For forecastable hazards (hurricane, rainfall) the waiting period must be longer than the forecast horizon.
-3. **Conservative liability.** `ZoneExposure` includes expired or waiting policies, which can reduce the payout factor more than necessary.
-4. **One fund per deployment.**
-5. **Insurance regulatory framework** unresolved; this is a post-pilot step.
+3. **Conservative liability.** `ZoneExposure` includes expired or waiting policies, which can reduce the payout factor more than necessary. The part of the reserve that no eligible policy ends up claiming stays locked until the event is closed out; releasing it needs an explicit close step or a claim deadline (not designed yet).
+4. **Flat premium.** Every zone pays the same `premium_bps` regardless of how exposed it is. A high-risk zone is subsidized by the others. A per-zone risk multiplier and a per-zone exposure cap relative to the pool are the natural next step; they are deliberately left out of the MVP.
+5. **One fund per deployment.**
+6. **Insurance regulatory framework** unresolved; this is a post-pilot step.
 
 ## Tests (minimum to demonstrate correctness)
 
@@ -162,8 +166,9 @@ pub enum Error {
 5. No payout: outside the zone, during the waiting period, expired, without a confirmed event.
 6. The same event cannot be claimed twice.
 7. Insufficient pool: pro-rata payout; never pays more than is available.
-8. Conservation of funds: the sum of payouts plus the pool balance equals what was contributed.
-9. Nobody can redirect the payout to another address.
+8. Two events confirmed before either is paid: the second one sees the pool minus the first reserve, and the sum of both payouts never exceeds the pool.
+9. Conservation of funds: the sum of payouts plus the pool balance equals what was contributed.
+10. Nobody can redirect the payout to another address.
 
 Use `soroban-sdk` with `testutils`, `mock_all_auths` and ledger timestamp manipulation.
 

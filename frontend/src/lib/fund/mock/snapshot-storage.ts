@@ -1,6 +1,6 @@
 import type { FundSnapshot } from "../types";
 
-export const SNAPSHOT_STORAGE_KEY = "quinti.demo.snapshot.v2";
+export const SNAPSHOT_STORAGE_KEY = "quinti.demo.snapshot.v3";
 
 /** The part of the Web Storage API the mock needs. Lets tests use an in-memory store. */
 export type KeyValueStorage = Pick<Storage, "getItem" | "setItem" | "removeItem">;

@@ -26,6 +26,9 @@ export function PoolSummary({ overview, onContribute }: PoolSummaryProps) {
       <p className="mt-3 text-ink-soft">
         {poolCopy.summary(overview.policyCount, formatAmount(overview.totalCoverage, { fractionDigits: 0 }))}
       </p>
+      {overview.reserved > 0n && (
+        <p className="mt-2 text-sm text-ink-soft">{poolCopy.reserved(formatAmount(overview.reserved))}</p>
+      )}
 
       <div className="mt-8">
         <ProgressBar

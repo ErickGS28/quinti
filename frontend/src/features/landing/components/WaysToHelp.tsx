@@ -1,4 +1,4 @@
-import { ArrowRight, Check, HandCoins, HeartHandshake } from "lucide-react";
+import { ArrowRight, Check, CirclePlay, HandCoins, HeartHandshake } from "lucide-react";
 import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/atoms/Button";
 import { Card } from "@/components/atoms/Card";
@@ -15,10 +15,12 @@ type WayCardProps = {
   points: readonly string[];
   action: string;
   href: string;
+  /** Page that explains the process step by step. */
+  guideHref: string;
   highlighted?: boolean;
 };
 
-function WayCard({ icon, label, title, points, action, href, highlighted = false }: WayCardProps) {
+function WayCard({ icon, label, title, points, action, href, guideHref, highlighted = false }: WayCardProps) {
   return (
     <Card padding="lg" className="flex flex-col">
       <span
@@ -40,10 +42,16 @@ function WayCard({ icon, label, title, points, action, href, highlighted = false
           </li>
         ))}
       </ul>
-      <ButtonLink href={href} variant={highlighted ? "primary" : "soft"} className="mt-8 self-start">
-        {action}
-        <ArrowRight className="size-4" aria-hidden="true" />
-      </ButtonLink>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <ButtonLink href={href}>
+          {action}
+          <ArrowRight className="size-4" aria-hidden="true" />
+        </ButtonLink>
+        <ButtonLink href={guideHref} variant="soft">
+          <CirclePlay className="size-4" aria-hidden="true" />
+          {ways.howItWorks}
+        </ButtonLink>
+      </div>
     </Card>
   );
 }
@@ -62,6 +70,7 @@ export function WaysToHelp() {
           points={ways.protect.points}
           action={ways.protect.action}
           href={ROUTES.protect}
+          guideHref={ROUTES.howToProtect}
         />
         <WayCard
           icon={<HandCoins className="size-6" aria-hidden="true" />}
@@ -70,6 +79,7 @@ export function WaysToHelp() {
           points={ways.contribute.points}
           action={ways.contribute.action}
           href={ROUTES.fund}
+          guideHref={ROUTES.howToContribute}
         />
       </div>
     </section>

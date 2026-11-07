@@ -1,3 +1,4 @@
+import { PageWash } from "@/components/atoms/PageWash";
 import { ScrollToTop } from "@/components/organisms/ScrollToTop";
 import { landingCopy } from "../copy";
 import { FaqSection } from "./FaqSection";
@@ -17,7 +18,7 @@ import { WhyStellar } from "./WhyStellar";
 export function LandingPage() {
   return (
     <div className="relative isolate">
-      <div aria-hidden="true" className="page-wash pointer-events-none absolute inset-x-0 top-0 -z-10 h-[56rem]" />
+      <PageWash />
       <LandingNav />
       <main>
         <Hero />

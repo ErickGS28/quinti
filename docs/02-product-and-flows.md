@@ -44,7 +44,7 @@ There is no administrator with access to the funds. That is the key property.
 
 ## Flows
 
-### Flow 1: protect a relative
+### Flow 1: protect yourself or a relative
 1. The sponsor connects their wallet.
 2. They enter the beneficiary's zone, the coverage and the payout address.
 3. They see the premium cost and the waiting period.
@@ -78,6 +78,7 @@ Dashboard with: pool balance, policies by zone, map, recent events and payouts m
 3. **My policies:** status, validity, renew.
 4. **Pool and events:** balance, map by zones, timeline of events and payouts.
 5. **Verifiers panel:** register an event, confirm it between attesters and execute the payouts.
+6. **Guides (public, no wallet needed):** one page per way of helping, reached from the landing page. Each shows the process as a visual timeline: open the wallet, choose, pay or contribute, the event is confirmed, the money arrives.
 
 ## Possible extensions
 

@@ -1,3 +1,5 @@
+import { LANDING_SECTIONS } from "@/config/constants";
+
 export const landingCopy = {
   nav: {
     how: "Cómo funciona",
@@ -11,7 +13,7 @@ export const landingCopy = {
   hero: {
     accent: ["Protección", "Solidaridad", "Reconstrucción"],
     body: "Cuando el desastre golpea, ninguna familia debería levantarse sola. Quinti reúne a una comunidad para que cada familia reciba apoyo en minutos y pueda empezar a reconstruir.",
-    primary: "Proteger a mi familia",
+    primary: "Proteger a los míos",
     secondary: "Ver cómo funciona",
   },
 
@@ -65,14 +67,14 @@ export const landingCopy = {
   },
 
   how: {
-    id: "como-funciona",
+    id: LANDING_SECTIONS.how,
     eyebrow: "Cómo funciona",
     title: "Protección en tres pasos.",
     body: "Quinti reúne las cuotas de muchas personas en un fondo común. Cuando un desastre se confirma, el fondo paga a quienes estaban protegidos en esa zona. Las reglas son públicas y se aplican igual para todos.",
     steps: [
       {
-        title: "Eliges a quién proteger",
-        body: "Indicas el nombre de tu familiar, la zona donde vive y el monto de cobertura. Pagas una cuota mensual pequeña.",
+        title: "Eliges quién queda protegido",
+        body: "Puedes ser tú, si vives en la zona, o un familiar al que respaldas desde lejos. Indicas su nombre, su zona y el monto de cobertura, y pagas una cuota mensual pequeña.",
       },
       {
         title: "Un desastre se confirma",
@@ -86,19 +88,20 @@ export const landingCopy = {
   },
 
   ways: {
-    id: "participar",
+    id: LANDING_SECTIONS.ways,
     eyebrow: "Cómo participar",
     title: "Dos formas de ayudar. No son lo mismo.",
-    body: "Puedes proteger a una persona o aportar al fondo. La diferencia es si alguien queda cubierto.",
+    body: "Puedes protegerte a ti o a un familiar, o aportar al fondo. La diferencia es si alguien queda cubierto.",
+    howItWorks: "¿Cómo funciona?",
     protect: {
-      label: "Proteger a alguien",
-      title: "Pagas una cuota y esa persona queda cubierta.",
+      label: "Protección",
+      title: "Pagas una cuota y quien nombres queda cubierto: tú o tu familia.",
       points: [
         "Pagas una cuota mensual pequeña",
-        "Si un desastre se confirma en su zona, recibe un pago automático",
+        "Si un desastre se confirma en la zona, la persona protegida recibe un pago automático",
         "Tú eliges a qué billetera llega el dinero",
       ],
-      action: "Proteger a alguien",
+      action: "Proteger a los míos",
     },
     contribute: {
       label: "Aportar al fondo",
@@ -114,12 +117,12 @@ export const landingCopy = {
 
   solidarity: {
     eyebrow: "Solidaridad latinoamericana",
-    title: "Tú proteges a tu familia. La región entera la respalda.",
+    title: "Tú te proteges. La región entera te respalda.",
     body: "Las cuotas de todos se reúnen en un mismo fondo. Como los desastres casi nunca golpean todas las zonas a la vez, lo que aportan quienes hoy están a salvo respalda a quienes hoy lo necesitan. Y mañana puede ser al revés.",
     points: [
       {
-        title: "Tú eliges a quién proteger",
-        body: "Tu cuota compra cobertura para la persona que nombras. Ella es quien recibe el pago si su zona es golpeada.",
+        title: "Tú eliges quién queda protegido",
+        body: "Tu cuota compra cobertura para la persona que nombras: tú mismo si vives en la zona, o un familiar. Esa persona recibe el pago si su zona es golpeada.",
       },
       {
         title: "Ayuda mutua, como una cooperativa",
@@ -145,7 +148,7 @@ export const landingCopy = {
   },
 
   why: {
-    id: "por-que",
+    id: LANDING_SECTIONS.why,
     eyebrow: "Por qué Stellar",
     title: "Una red hecha para mover dinero.",
     items: [
@@ -165,14 +168,19 @@ export const landingCopy = {
   },
 
   faq: {
-    id: "preguntas",
+    id: LANDING_SECTIONS.faq,
     eyebrow: "Preguntas frecuentes",
     title: "Lo que suelen preguntar.",
     items: [
       {
-        question: "¿Proteger a alguien es una donación?",
+        question: "¿Puedo protegerme a mí mismo?",
         answer:
-          "No. Cuando proteges a alguien pagas una cuota y esa persona queda cubierta: si un desastre se confirma en su zona, recibe un pago. Si prefieres donar sin recibir cobertura, puedes aportar al fondo.",
+          "Sí, y es la forma más directa. Si vives en una de las zonas, te inscribes con tu nombre, eliges tu zona y la billetera donde quieres recibir el pago. También puedes proteger a un familiar, aunque estés lejos.",
+      },
+      {
+        question: "¿Proteger es una donación?",
+        answer:
+          "No. Pagas una cuota y la persona protegida queda cubierta: si un desastre se confirma en su zona, recibe un pago. Si prefieres donar sin recibir cobertura, puedes aportar al fondo.",
       },
       {
         question: "¿Mi cuota ayuda a personas de otros países?",
@@ -229,14 +237,13 @@ export const landingCopy = {
 
   finalCta: {
     title: "Que una mala noticia no signifique empezar de cero.",
-    body: "Protege hoy a quienes más quieres. Si un desastre los alcanza, el apoyo ya estará en camino.",
-    action: "Proteger a mi familia",
+    body: "Protégete hoy, a ti y a quienes más quieres. Si un desastre los alcanza, el apoyo ya estará en camino.",
+    action: "Proteger a los míos",
   },
 
   footer: {
     origin: "Qínti es colibrí en quechua: pequeño, veloz y directo.",
     credit: "Construido sobre la red Stellar",
-    repository: "Código en GitHub",
     legal: "Quinti es un fondo comunitario de ayuda mutua. No es una póliza de seguro regulada.",
   },
 } as const;

@@ -11,6 +11,8 @@ export type ZoneOverview = {
 
 export type FundOverview = {
   poolAvailable: bigint;
+  /** Money already promised to confirmed events and not yet paid out. Not part of `poolAvailable`. */
+  reserved: bigint;
   policyCount: number;
   totalCoverage: bigint;
   zones: ZoneOverview[];

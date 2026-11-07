@@ -8,7 +8,9 @@ import {
   computeFactorBps,
   estimateLiability,
   payoutBpsFor,
+  poolFree,
   premiumFor,
+  reserveFor,
 } from "../rules";
 import { createSeedSnapshot } from "../seed";
 import type { EnrollInput, EventReport, FundEvent, FundSnapshot, Payout, Policy } from "../types";
@@ -125,9 +127,9 @@ export function createMockFundClient({ storage, simulateLatency = true, now = no
       const approvals = [...(existing?.approvals ?? []), attesterId];
       const confirmed = approvals.length >= config.quorum;
       const payoutBps = confirmed ? payoutBpsFor(report.hazard, report.value, config.rules) : 0;
-      const factorBps = confirmed
-        ? computeFactorBps(snapshot.poolAvailable, estimateLiability(snapshot.policies, report.zoneIds, payoutBps))
-        : 0;
+      const liability = confirmed ? estimateLiability(snapshot.policies, report.zoneIds, payoutBps) : 0n;
+      const factorBps = confirmed ? computeFactorBps(poolFree(snapshot.poolAvailable, snapshot.events), liability) : 0;
+      const reserved = reserveFor(liability, factorBps);
 
       const event: FundEvent = {
         ref: report.ref,
@@ -139,6 +141,7 @@ export function createMockFundClient({ storage, simulateLatency = true, now = no
         confirmed,
         payoutBps,
         factorBps,
+        reserved,
       };
 
       commit({
@@ -159,6 +162,7 @@ export function createMockFundClient({ storage, simulateLatency = true, now = no
 
       const paidAt = now();
       let poolAvailable = snapshot.poolAvailable;
+      let remaining = event.reserved;
       const newPayouts: Payout[] = [];
 
       for (const policy of snapshot.policies) {
@@ -167,15 +171,23 @@ export function createMockFundClient({ storage, simulateLatency = true, now = no
         );
         if (!checkEligibility(policy, event, alreadyPaid).eligible) continue;
 
+        // A payout can only draw from what this event reserved, never from another event's reserve.
         const wanted = claimAmount(policy.coverage, event.payoutBps, event.factorBps);
-        const amount = wanted > poolAvailable ? poolAvailable : wanted;
+        const amount = wanted > remaining ? remaining : wanted;
         if (amount <= 0n) continue;
 
         poolAvailable -= amount;
+        remaining -= amount;
         newPayouts.push({ eventRef, policyId: policy.id, amount, paidAt });
       }
 
-      commit({ ...snapshot, poolAvailable, payouts: [...snapshot.payouts, ...newPayouts] });
+      // Every eligible policy was handled above, so whatever is left of the reserve is released to the pool.
+      commit({
+        ...snapshot,
+        poolAvailable,
+        events: snapshot.events.map((item) => (item.ref === eventRef ? { ...item, reserved: 0n } : item)),
+        payouts: [...snapshot.payouts, ...newPayouts],
+      });
       return newPayouts;
     },
 

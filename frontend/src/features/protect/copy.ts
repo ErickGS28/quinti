@@ -1,6 +1,6 @@
 export const protectCopy = {
-  title: "Proteger a alguien",
-  subtitle: "Pagas una cuota mensual pequeña. Si un desastre se confirma en su zona, el fondo le paga.",
+  title: "Protección",
+  subtitle: "Pagas una cuota mensual pequeña. Si un desastre se confirma en la zona, el fondo paga a la persona protegida: tú o un familiar.",
   stepLabel: (current: number, total: number) => `Paso ${current} de ${total}`,
   back: "Atrás",
   next: "Continuar",
@@ -8,16 +8,16 @@ export const protectCopy = {
 
   introTitle: "Cómo funciona",
   introSteps: [
-    "Pagas una cuota mensual pequeña por la persona que quieres proteger.",
+    "Pagas una cuota mensual pequeña por la persona que quedará protegida: tú o un familiar.",
     "Si un desastre se confirma en su zona, el fondo paga automáticamente el monto acordado.",
     "El dinero llega a la billetera que elijas, sin formularios ni trámites.",
   ],
   introNote: "No es una donación: a cambio de la cuota, la persona queda cubierta. Si prefieres ayudar sin recibir cobertura, puedes",
   introNoteLink: "aportar al fondo",
 
-  personTitle: "¿A quién quieres proteger?",
-  nameLabel: "Nombre",
-  namePlaceholder: "Por ejemplo, Luz",
+  personTitle: "¿Quién quedará protegido?",
+  nameLabel: "Nombre de la persona protegida",
+  namePlaceholder: "Tu nombre o el de tu familiar",
   nameError: "Escribe un nombre de al menos 2 letras.",
   zoneLegend: "Zona donde vive",
   zoneHint: "Elige el departamento o estado. El pago depende únicamente de lo que ocurra en esa zona.",

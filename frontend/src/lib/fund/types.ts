@@ -70,6 +70,11 @@ export type FundEvent = {
   payoutBps: number;
   /** Share of that payout the pool can afford (10000 = fully funded). Set on confirmation. */
   factorBps: number;
+  /**
+   * Amount set aside from the pool when the event was confirmed, so a later event cannot promise
+   * the same money. Released when the event is paid out. Zero until confirmation.
+   */
+  reserved: bigint;
 };
 
 export type EventReport = {

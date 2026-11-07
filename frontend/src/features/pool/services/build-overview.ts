@@ -1,5 +1,5 @@
 import { BASIS_POINTS } from "@/config/constants";
-import { computeFactorBps, estimateLiability } from "@/lib/fund/rules";
+import { computeFactorBps, estimateLiability, poolFree, reservedTotal } from "@/lib/fund/rules";
 import type { FundSnapshot } from "@/lib/fund/types";
 import type { FundOverview, ZoneActivity } from "../types";
 
@@ -12,7 +12,9 @@ function activityOf(snapshot: FundSnapshot, zoneId: number): ZoneActivity {
 
 /** Reduces the snapshot to the figures the fund screen shows. */
 export function buildOverview(snapshot: FundSnapshot): FundOverview {
-  const { config, policies, poolAvailable } = snapshot;
+  const { config, policies } = snapshot;
+  const poolAvailable = poolFree(snapshot.poolAvailable, snapshot.events);
+  const reserved = reservedTotal(snapshot.events);
   const maxPayoutBps = config.rules.reduce((best, rule) => Math.max(best, rule.payoutBps), 0);
 
   const zones = config.zones.map((zone) => {
@@ -32,6 +34,7 @@ export function buildOverview(snapshot: FundSnapshot): FundOverview {
 
   return {
     poolAvailable,
+    reserved,
     policyCount: policies.length,
     totalCoverage: policies.reduce((total, policy) => total + policy.coverage, 0n),
     zones,

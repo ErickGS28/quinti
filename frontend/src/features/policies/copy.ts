@@ -1,7 +1,7 @@
 export const policiesCopy = {
   title: "Tus protecciones",
-  subtitle: "A quién proteges y a dónde llegará el dinero si ocurre un desastre en su zona.",
-  protectAction: "Proteger a alguien",
+  subtitle: "Quién está protegido y a dónde llegará el dinero si ocurre un desastre en su zona.",
+  protectAction: "Proteger a los míos",
   loadErrorTitle: "No pudimos cargar tus protecciones",
   loadErrorBody: "Revisa tu conexión e inténtalo de nuevo.",
   retry: "Reintentar",
