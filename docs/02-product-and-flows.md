@@ -18,7 +18,7 @@ There is no administrator with access to the funds. That is the key property.
 |---------|------------|
 | **Pool** | Common balance: premiums plus contributions minus payouts |
 | **Policy** | Coverage for one person in one zone: covered amount, validity period and payout address |
-| **Zone** | Discrete geographic area (municipality or region) identified by a number |
+| **Zone** | Discrete area at department or state level (for example Chocó in Colombia or La Guaira in Venezuela), identified by a number. It is not a country or a city. The interface groups zones by country |
 | **Hazard** (*hazard*) | Type of event: earthquake, extreme rainfall, etc. |
 | **Payout rule** | "If hazard X exceeds threshold Y, pay Z % of the coverage" |
 | **Waiting period** | Days after enrollment during which the policy does not yet cover |
@@ -30,7 +30,7 @@ There is no administrator with access to the funds. That is the key property.
 |-----------|---------|
 | Token | Testnet USDC (or a test token) |
 | Attesters and quorum | 3 accounts, quorum 2 |
-| Waiting period | 14 days (minutes in the demo) |
+| Waiting period | 14 days (one minute in the test configuration) |
 | Premium duration | 30 days |
 | Payout rules | Earthquake ≥ 5.0 → 20 %; earthquake ≥ 6.5 → 100 % |
 | Minimum and maximum coverage | 25 to 200 USDC |
@@ -77,9 +77,9 @@ Dashboard with: pool balance, policies by zone, map, recent events and payouts m
 2. **Protect:** form for zone, coverage, payout address and premium.
 3. **My policies:** status, validity, renew.
 4. **Pool and events:** balance, map by zones, timeline of events and payouts.
-5. **Attester console (demo only):** report a real or simulated event.
+5. **Verifiers panel:** register an event, confirm it between attesters and execute the payouts.
 
-## Extras (only if time allows)
+## Possible extensions
 
 - **Second hazard** (extreme rainfall), using the same generic logic.
 - **Automatic claims** by a service that watches events and executes the claims.

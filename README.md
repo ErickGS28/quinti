@@ -4,11 +4,9 @@
 
 **Quinti** (*qínti*, hummingbird in Quechua) is a community fund that automatically pays digital dollars to families in a zone hit by a natural disaster. No forms, no assessments: when public data confirms the event, a Stellar contract sends the money. Anyone living abroad can protect their family with a small monthly premium.
 
-Project for the **Código Cordillera (BAF × Stellar)** hackathon, November 6–8, 2026.
-
 ## Status
 
-Prototype in preparation. Testnet only. It is not a regulated insurance product and is not ready for real money.
+Interactive prototype running on simulated data (see [frontend/README.md](frontend/README.md)). The Soroban contract is not written yet. Testnet only. It is not a regulated insurance product and is not ready for real money.
 
 ## How it works
 
@@ -16,12 +14,22 @@ Prototype in preparation. Testnet only. It is not a regulated insurance product 
 2. **The event is confirmed:** attesters report an earthquake (or another hazard) using public data.
 3. **The contract pays:** the money reaches the address fixed in advance, within minutes.
 
-## Planned stack
+## Stack
 
-- **Contract:** Rust + Soroban (Stellar).
-- **Frontend:** TypeScript + React, design inspired by Cupertino.
-- **Wallet:** Freighter (passkeys as an improvement).
+- **Contract:** Rust + Soroban (Stellar), planned.
+- **Frontend:** Next.js (App Router) + TypeScript + Tailwind, design inspired by Cupertino. Built.
+- **Wallet:** simulated in the prototype; Freighter planned (passkeys as an improvement).
 - **Network:** Stellar testnet.
+
+## Run the prototype
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open http://localhost:3000 for the presentation page and http://localhost:3000/app for the prototype.
 
 ## Documentation
 
@@ -32,7 +40,7 @@ Start with [docs/00-idea.md](docs/00-idea.md). The full index is in [docs/README
 ```
 docs/         documentation and decisions
 contracts/    Soroban contract (coming soon)
-frontend/     web application (coming soon)
+frontend/     Next.js web app: presentation page and interactive prototype
 scripts/      deployment and demo data (coming soon)
 ```
 

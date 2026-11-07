@@ -145,7 +145,7 @@ pub enum Error {
 - Limit on zones per event to bound costs.
 - Storage TTL: extend the lifetime of persistent entries (policies live for months). **Verify `extend_ttl` in the current documentation.**
 
-## Known MVP limits (state them in the pitch)
+## Known MVP limits
 
 1. **Trusted attesters.** A k-of-n quorum of known accounts, not a decentralized oracle. This is the largest trust point in the design.
 2. **Self-declared zone.** Mitigated by the waiting period, the maximum coverage and the fixed zone; not eliminated. For forecastable hazards (hurricane, rainfall) the waiting period must be longer than the forecast horizon.

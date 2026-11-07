@@ -34,7 +34,7 @@ Luz lives in Quibdó. Her son Andrés works in another country and pays 2 USDC a
 
 ## Goal
 
-- **Of the project:** demonstrate at the hackathon a working parametric fund on testnet, end to end: enroll, contribute, confirm a real event and receive the payout.
+- **Of the product:** a parametric fund that works end to end: enroll, contribute, confirm a real event and receive the payout.
 - **Long term:** make protecting a family against a disaster cost about as much as a coffee a month, and make the money arrive when it is needed.
 
 ## Who it is for
@@ -63,6 +63,6 @@ Luz lives in Quibdó. Her son Andrés works in another country and pays 2 USDC a
 
 | To understand… | Document |
 |----------------|----------|
-| The pitch and the argument | [01-vision-and-pitch.md](01-vision-and-pitch.md) |
+| The argument | [01-vision.md](01-vision.md) |
 | Who uses what and how | [02-product-and-flows.md](02-product-and-flows.md) |
 | How the contract works | [03-contract-design.md](03-contract-design.md) |

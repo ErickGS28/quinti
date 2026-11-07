@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+/*
+ * Quinti design tokens. Light only: white is friendlier. Names come from the product's world:
+ * leaf and canopy (rainforest greens, the color of action and recovery), lagoon (deep teal, the
+ * color of titles and links), sky (clear cyan, decorative), mint (new growth), clay (river clay,
+ * for cautions) and mist (the faint tint of morning fog).
+ * Brand palette: #004E64, #00A5CF, #9FFFCB, #25A18E, #7AE582.
+ */
+:root {
+  --canvas: #ffffff;
+  --mist: #f2f9fb;
+  --cloud: #ffffff;
+  --cloud-raised: #ffffff;
+  --ink: #0a3342;
+  --ink-soft: #3f6372;
+  --ink-faint: #577684;
+  --hairline: rgb(0 78 100 / 0.12);
+  --hairline-strong: rgb(0 78 100 / 0.22);
+
+  --lagoon: #004e64;
+  --lagoon-strong: #003b4d;
+  --lagoon-soft: #e1f4f9;
+
+  --sky: #00a5cf;
+
+  --leaf: #7ae582;
+  --leaf-strong: #62d46d;
+  --on-leaf: #003b4d;
+
+  --canopy: #25a18e;
+  --canopy-strong: #1b7a6b;
+  --canopy-deep: #14604f;
+  --canopy-soft: #e5fbee;
+  --on-canopy: #ffffff;
+
+  --mint: #9fffcb;
+
+  --clay: #a35508;
+  --clay-soft: #fdf0e0;
+  --ember: #b3261e;
+  --ember-soft: #fdeae8;
+
+  --veil: rgb(255 255 255 / 0.82);
+  --scrim: rgb(0 40 52 / 0.38);
+
+  --elevation-card: 0 0 0 1px rgb(0 78 100 / 0.05), 0 1px 2px rgb(0 78 100 / 0.04), 0 12px 32px -12px rgb(0 78 100 / 0.16);
+  --elevation-float: 0 0 0 1px rgb(0 78 100 / 0.06), 0 2px 6px rgb(0 78 100 / 0.06), 0 24px 48px -16px rgb(0 78 100 / 0.24);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-mist: var(--mist);
+  --color-cloud: var(--cloud);
+  --color-cloud-raised: var(--cloud-raised);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-lagoon: var(--lagoon);
+  --color-lagoon-strong: var(--lagoon-strong);
+  --color-lagoon-soft: var(--lagoon-soft);
+  --color-sky: var(--sky);
+  --color-leaf: var(--leaf);
+  --color-leaf-strong: var(--leaf-strong);
+  --color-on-leaf: var(--on-leaf);
+  --color-canopy: var(--canopy);
+  --color-canopy-strong: var(--canopy-strong);
+  --color-canopy-deep: var(--canopy-deep);
+  --color-canopy-soft: var(--canopy-soft);
+  --color-on-canopy: var(--on-canopy);
+  --color-mint: var(--mint);
+  --color-clay: var(--clay);
+  --color-clay-soft: var(--clay-soft);
+  --color-ember: var(--ember);
+  --color-ember-soft: var(--ember-soft);
+  --color-veil: var(--veil);
+
+  --radius-control: 0.875rem;
+  --radius-card: 1.5rem;
+  --radius-sheet: 2rem;
+
+  --shadow-card: var(--elevation-card);
+  --shadow-float: var(--elevation-float);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-inter), system-ui, sans-serif;
+
+  --animate-ripple: ripple 5.4s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+  --animate-rise: rise 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  --animate-spin-once: spin-once 0.9s cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--canopy) var(--mist);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@layer base {
+  /* Titles are deep teal; body text keeps the darker ink. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--lagoon);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--lagoon);
+    outline-offset: 2px;
+  }
+}
+
+::selection {
+  background: var(--mint);
+}
+
+/* Green scrollbar for browsers that only understand the WebKit syntax. */
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--mist);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--canopy);
+    border: 3px solid var(--mist);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--canopy-strong);
+  }
+}
+
+/* Signature: concentric rings that expand like a seismic wave, a ripple on water, or a hovering wing. */
+@keyframes ripple {
+  0% {
+    transform: scale(0.35);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin-once {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Quiet wash of mint, leaf and sky behind the top of the landing page. */
+.page-wash {
+  background:
+    radial-gradient(52rem 26rem at 88% 0%, rgb(0 165 207 / 0.12), transparent 70%),
+    radial-gradient(48rem 28rem at 6% 14%, rgb(159 255 203 / 0.5), transparent 70%),
+    radial-gradient(32rem 22rem at 55% 40%, rgb(122 229 130 / 0.18), transparent 70%);
+}
+
+dialog.sheet {
+  margin: auto auto 0;
+  animation: sheet-in 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+dialog.sheet::backdrop {
+  background: var(--scrim);
+  backdrop-filter: blur(6px);
+}
+
+@media (min-width: 640px) {
+  dialog.sheet {
+    margin: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .ripple-ring {
+    opacity: 0.22 !important;
+    transform: scale(var(--ring-scale, 1)) !important;
+  }
+}

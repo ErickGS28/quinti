@@ -1,6 +1,6 @@
 # 5. Design system
 
-> Status: **direction defined, values provisional.** Final token values live in the frontend token file and this document is updated when they settle. The hummingbird logo is added when it is delivered. Before building UI, apply `toolkit/skills/interface-design/` and `toolkit/skills/ui-ux-pro-max/`.
+> Status: **implemented in the prototype.** The source of truth for values is `frontend/src/app/globals.css`; this document describes the intent. The logo is a traced prototype of the delivered artwork and will be replaced when the final version arrives. Before changing UI, apply `toolkit/skills/interface-design/` and `toolkit/skills/ui-ux-pro-max/`.
 
 ## Direction
 
@@ -21,31 +21,52 @@ Principles:
 - Large titles, a clear hierarchy in few sizes.
 - Money uses tabular figures.
 
-## Color: serene blue and green
+## Color: green for action, deep teal for titles
 
-The palette comes from the places Quinti protects: the sky and the Pacific, and the green of the Chocó rainforest. Blue carries trust and action. Green carries safety and arrival of help. Warm colors are reserved for alerts.
+The brand palette is `#004E64`, `#00A5CF`, `#9FFFCB`, `#25A18E` and `#7AE582`. The interface is light only: white is friendlier, so the canvas is white and color is used for accents. The greens carry action and recovery; the deep teal carries titles, links and structure.
 
-| Role | Provisional value | Use |
-|------|-------------------|-----|
-| Canvas | `#F4F8FA` | App background, a cool off-white |
-| Surface | `#FFFFFF` | Cards |
-| Ink | `#0F2A3D` | Primary text (deep blue-black) |
-| Ink secondary | `#4A6475` | Supporting text |
-| Hairline | `rgba(15, 42, 61, 0.12)` | Separators |
-| Primary (blue) | `#1F6FB2` | Main actions, links, focus. Contrast on white about 5.3:1 |
-| Primary soft | `#E3EFF8` | Tinted backgrounds for blue elements |
-| Safe (green) | `#167A5C` | Pool, confirmed, paid. Contrast on white about 5.3:1 |
-| Safe soft | `#E0F3EC` | Tinted backgrounds for green elements |
-| Warning | `#B25E09` | Waiting period, expiring cover |
-| Danger | `#B3261E` | Errors, failed transactions |
+Tokens are named after the product's world, not after their appearance. Source of truth: `frontend/src/app/globals.css`.
+
+| Token | Value | Use |
+|-------|-------|-----|
+| `canvas` | `#FFFFFF` | Page background |
+| `mist` | `#F2F9FB` | Tinted bands and inner surfaces |
+| `cloud` | `#FFFFFF` | Cards and sheets |
+| `ink` | `#0A3342` | Body text |
+| `ink-soft` / `ink-faint` | `#3F6372` / `#577684` | Supporting and tertiary text |
+| `hairline` | `rgb(0 78 100 / 0.12)` | Separators |
+| `lagoon` | `#004E64` | Titles, links, the bird in the logo. Contrast on white about 9:1 |
+| `leaf` / `leaf-strong` | `#7AE582` / `#62D46D` | Main buttons, active menu item, scroll-to-top button. Text on it is `on-leaf` (`#003B4D`), about 6:1 |
+| `canopy` | `#25A18E` | Green fills and accents, scrollbar, progress. Not used for small text (about 3:1 on white) |
+| `canopy-strong` / `canopy-deep` | `#1B7A6B` / `#14604F` | Green text, the "execute payouts" button and its hover |
+| `canopy-soft` | `#E5FBEE` | Tinted backgrounds for green elements, secondary buttons |
+| `sky` | `#00A5CF` | Decorative accent: ripples, map dots. Not used for text (about 2.9:1) |
+| `lagoon-soft` | `#E1F4F9` | Tinted backgrounds for informational elements |
+| `mint` | `#9FFFCB` | Washes and text selection |
+| `clay` | `#A35508` | Cautions: waiting period, partial funding |
+| `ember` | `#B3261E` | Errors |
 
 Rules:
 
-- One accent per screen area: blue means "you can act", green means "this is protected or paid".
-- Gradients only as a quiet sky-to-forest wash in the landing hero, never on controls.
-- Dark mode from the start, same hierarchy; semantic colors slightly desaturated.
-- Contrast values above were computed by hand from the hex codes and must be re-checked in the browser.
+- Green means "you can act" and "this is protected or paid". Deep teal means "this is a title or a link".
+- The bright palette colors fail contrast for small text, so text uses `lagoon`, `canopy-strong` or `on-leaf`.
+- Gradients only as a quiet wash of mint, leaf and sky behind the top of the landing page, never on controls.
+- No dark mode: the interface stays light regardless of the system setting.
+- The scrollbar thumb is `canopy` (`scrollbar-color`, with a WebKit fallback).
+- Contrast values were computed by hand from the hex codes and have not been audited with a tool.
 
+## Logo
+
+A hummingbird inside an open ring. The ring is a gradient from `#7AE582` to `#25A18E` and the bird is `#004E64`. The mark spins one full turn when the mark, or the logo group it belongs to, is hovered; reduced motion disables it. The vector in `frontend/src/components/atoms/brand-mark-paths.ts` and `frontend/public/quinti-logo.svg` was traced automatically from the prototype image, so its edges are slightly irregular at large sizes. Replace it with the designer's vector when available.
+
+## Navigation and page chrome
+
+The logo is not part of the menu.
+
+- **Landing page:** the floating menu comes first, at the very top. The hero sits right below it and presents the large logo with its name.
+- **App:** the logo sits at the top left of a header, next to the account, and the menu floats under it.
+- **Menu:** a rounded bar at 75 to 80% of the width. On phones it floats above the bottom edge. On the landing page only the first and last links fit next to the button on small screens.
+- **Scroll to top:** a round green button at the bottom left, visible after scrolling about 480 px. In the app it sits above the bottom menu on phones.
 ## Shape and spacing
 
 - Large, soft corners (12 to 20 px). Grouped cards with thin separators.
@@ -54,7 +75,7 @@ Rules:
 
 ## Base components
 
-Navigation bar with large title, grouped list, summary card, segmented control, switch, primary and secondary button, bottom sheet for confirmations, empty state, progress indicator, status badge.
+Floating rounded menu (top on large screens, bottom on phones), large page titles, card, option cards (radio group), segmented control, text field with hint and error, primary, safe, soft and ghost buttons, bottom sheet for confirmations (native dialog), empty and error states, progress bar, status badge, inline notice.
 
 ## Motion
 
@@ -72,8 +93,12 @@ It was considered and is **not adopted as the base**. Thick borders, hard shadow
 
 The site and its components were not reviewed; this assessment is based on the neobrutalist style in general.
 
+## Signature: the ripple
+
+Concentric rings that spread from a point. They read as a seismic wave, a ripple on water and a hovering wing, and they echo the open ring of the logo. They appear in the landing hero, on the zone map while an event is open (amber) or confirmed (green), and on the "payment sent" and "protected" moments. They are decorative, hidden from assistive technology, and become static rings when reduced motion is requested.
+
 ## Identity
 
 - Name: **Quinti** (*qínti*, hummingbird in Quechua).
-- Logo: hummingbird (pending).
+- Logo: see the Logo section above.
 - Tone: warm, direct, hopeful, never dramatic.

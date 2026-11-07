@@ -1,0 +1,32 @@
+export const poolCopy = {
+  title: "El fondo",
+  subtitle: "Las cuotas y los aportes se reúnen aquí. Cuando un desastre se confirma, de este fondo salen los pagos. Todo es público.",
+  available: "Disponible en el fondo",
+  summary: (families: number, coverage: string) =>
+    `${families} ${families === 1 ? "persona protegida" : "personas protegidas"} · ${coverage} de cobertura`,
+  worstCaseFull: "Si el peor caso ocurriera en una sola zona, el fondo cubriría todos los pagos.",
+  worstCasePartial: (percent: string) =>
+    `Si el peor caso ocurriera en una sola zona, el fondo cubriría el ${percent} de cada pago.`,
+  worstCaseLabel: "Cobertura del fondo en el peor caso",
+  contribute: "Aportar al fondo",
+  mapTitle: "Zonas protegidas",
+  mapNote: "Cada zona es un departamento o estado. Las posiciones son aproximadas.",
+  zoneCount: (count: number) => `${count} ${count === 1 ? "persona" : "personas"}`,
+  zoneEvent: "Evento en curso",
+  zoneEventPaid: "Evento confirmado",
+  loadErrorTitle: "No pudimos cargar el fondo",
+  loadErrorBody: "Revisa tu conexión e inténtalo de nuevo.",
+  retry: "Reintentar",
+
+  sheetTitle: "Aportar al fondo",
+  sheetBody: "Un aporte es una donación voluntaria. Ayuda a pagar a quienes están protegidos y no da cobertura.",
+  amountLabel: "Monto en USDC",
+  amountHint: "Puedes escribir cualquier monto.",
+  amountError: "Escribe un monto mayor que cero. Usa coma o punto para los decimales.",
+  presetsLegend: "Montos sugeridos",
+  confirm: "Aportar",
+  close: "Cerrar",
+  successTitle: "Gracias por aportar",
+  successBody: (amount: string) => `${amount} ya están en el fondo.`,
+  successAction: "Listo",
+} as const;
