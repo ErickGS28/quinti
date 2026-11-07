@@ -1,0 +1,18 @@
+# Secrets and identities
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+.stellar/
+.soroban/
+
+# Build artifacts and dependencies
+node_modules/
+target/
+dist/
+.next/
+
+# OS / editor
+.DS_Store
+Thumbs.db
